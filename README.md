@@ -1,4 +1,5 @@
 - I have built a React project with a clean architecture.
+- Typescript has been used in order to develop that project.
 - The project has been created on webpack without a boilerplate.
 - Tailwindcss has been used for design.
 - Nesine API gave 3000 items which belongs to an array. So I've shown as many items as can fit in the window height. When scrolling, the begin and end indexes which belong to items are changed. I think that gives us performance.
