@@ -1,0 +1,80 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "standard-with-typescript",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": { "jsx": true }
+  },
+  "plugins": ["prettier", "react", "simple-import-sort"],
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "simple-import-sort/exports": "error",
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              //This is for syntax like "import 'xyz'"
+              ["^\\u0000"],
+              // Packages `react` related packages after react.
+              [
+                "^(react)(?![-])",
+                "^react-dom",
+                "react-router-dom",
+                "react-redux",
+                "redux",
+                "^redux-"
+              ],
+              //Other Packages
+              ["^@?\\w", "^react-"],
+              // Packages from nsn
+              ["^@nsn", "^\\w"],
+              // Parent imports. Put `..` last. Other relative imports. Put same-folder imports and `.` last. Style imports
+              [
+                "^\\.\\.(?!/?$)",
+                "^\\.\\./?$",
+                "^\\./(?=.*/)(?!/?$)",
+                "^\\.(?!/?$)",
+                "^\\./?$",
+                "^.+\\.?(s?css)$"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["webpack.*"],
+      "rules": {
+        "import/no-extraneous-dependencies": 0,
+        "@typescript-eslint/no-var-requires": "off",
+        "react/no-unstable-nested-components": "off"
+      }
+    }
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx", ".js", ".jsx"]
+    },
+    "import/resolver": {
+      "typescript": { "alwaysTryTypes": true, "project": "./tsconfig.json" },
+      "webpack": 1,
+      "node": 1
+    }
+  }
+}
