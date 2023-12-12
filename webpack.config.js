@@ -1,6 +1,7 @@
 const path = require('path');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const {
   HtmlWebpackSkipAssetsPlugin,
 } = require('html-webpack-skip-assets-plugin');
@@ -28,6 +29,10 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin(),
     new HtmlWebpackSkipAssetsPlugin({
       excludeAssets: [/vendor.css/, /vendor.min.css/],
+    }),
+    new HtmlWebPackPlugin({
+      template: path.resolve(__dirname, 'public/index.html'),
+      filename: 'index.html',
     }),
   ],
   module: {
@@ -104,5 +109,11 @@ module.exports = {
         },
       },
     },
+  },
+  devServer: {
+    compress: true,
+    port: 9000,
+    hot: true,
+    historyApiFallback: true,
   },
 };
