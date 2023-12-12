@@ -9,5 +9,5 @@ export const Dashboard = (): ReactElement => {
   useEffect(() => {
     dispatch(setBreadcrumb(MenuList));
   }, []);
-  return <div>You look at Dashboard right now</div>;
+  return <></>;
 };

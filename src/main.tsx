@@ -7,14 +7,11 @@ import { store } from './application/store';
 import router from './router';
 import './assets/styles/global.scss';
 
-alert('hi');
-const rootElement = document.getElementById('root');
-if (rootElement !== null) {
-  createRoot(rootElement).render(
-    <StrictMode>
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
-    </StrictMode>
-  );
-}
+const node = document.getElementById('root') as HTMLDivElement;
+createRoot(node).render(
+  <StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </StrictMode>
+);
