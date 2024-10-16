@@ -7,9 +7,14 @@ import {
   MagnifyingGlassIcon,
 } from '@heroicons/react/24/outline';
 
+import { useBreadcrumb } from '@/src/layouts/Private/hooks/useBreadcrumb';
 import { Sidebar } from '@/src/layouts/Private/Sidebar';
 
 export const PrivateLayout = (): ReactElement => {
+  const breadcrumb = useBreadcrumb();
+
+  console.log({ breadcrumb });
+
   return (
     <div className="relative min-h-screen bg-gradient-to-r from-slate-300 to-slate-300">
       <div className="absolute rounded-full blur-3xl bg-blue-300 w-1/3 h-1/3 left-[-10%] top-[-10%]"></div>

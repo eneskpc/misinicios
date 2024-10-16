@@ -4,12 +4,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { Menu } from '../models/menu';
 import type { OptionsState } from './state';
 
+import { Slices } from '@/src/application/data/slices';
+
 const initialState: OptionsState = {
   breadcrumb: [],
 };
 
 const slice = createSlice({
-  name: 'options',
+  name: Slices.OPTIONS,
   initialState,
   reducers: {
     setBreadcrumb: (state, action: PayloadAction<Menu[]>) => {

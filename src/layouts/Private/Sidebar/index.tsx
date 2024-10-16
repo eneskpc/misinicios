@@ -19,10 +19,10 @@ export const Sidebar = (): ReactElement => {
   return (
     <div className="sidebar">
       <div className="menu">
-        <NavLink to="/dashboard" className="logo-container">
+        <NavLink to="/dashboard" className="logo-container" end>
           <img className="w-full" src={logoSource} />
         </NavLink>
-        <NavLink to="/dashboard" className={configureMenuItemClasses}>
+        <NavLink to="/dashboard" className={configureMenuItemClasses} end>
           <AdjustmentsHorizontalIcon className="w-6 h-6" />
           <span className="page-name">Dashboard</span>
         </NavLink>
